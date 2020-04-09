@@ -176,7 +176,7 @@ def makeReliabilityTreeGivenReliabilityGoal(city_list, edge_list, reliability_go
 
     remaining_edge_list.sort(key=lambda edge: edge.getReliability(), reverse=True)
 
-    graph = mst_graph
+    graph = mst_graph.copy()
     total_cost = 0
     total_reliability = 0
 
@@ -284,10 +284,18 @@ def main():
     total_reliability = 0
 
     city_list, edge_list = edge_generator.generate(file_path)
+
+    #
     if reliability_goal == "":
         print("NO RELIABILITY GIVEN, CANNOT DO PART A")
+    # elif float(reliability_goal) > 1:
+    #     while True:
+    #         reliability_goal = input("Please enter reliability less than or equal to 1")
+    #         if int(reliability_goal) <= 1 or reliability_goal == "":
+    #             break
     else:
-        graph, total_reliability, total_cost = makeReliabilityTreeGivenReliabilityGoal(city_list, edge_list, reliability_goal)
+        graph, total_reliability, total_cost = makeReliabilityTreeGivenReliabilityGoal(city_list, edge_list,
+                                                                                       reliability_goal)
         if graph is not None:
             print(graph)
             print(total_reliability)
