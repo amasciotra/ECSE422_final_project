@@ -316,13 +316,21 @@ def UI():
     return file_path, reliability_goal, cost_constraint
 
 
-# def PrintToFile(filename, graph, reliability, cost):
-#     put your stuff in here
+#def PrintToFile(filename, graph, reliability, cost):
+#    fileprintA = open("Solutions to part A","w+")
+#    fileprintA.write("Part A graph", graph)
+#    fileprintA.write("Part A Reliability", total_reliability)
+#    fileprintA.write("Part A Cost", total_cost)
+#    fileprintA.close()
 #
-#
-#
-#
-#
+#    fileprintB = open("Solutions to Part B","w+")
+#    fileprintB.write("Part B Graph", graph)
+#    fileprintB.write("Part B Reliability", total_reliability)
+#    fileprintB.write("Part B Cost", total_cost)
+#    fileprintB.close()
+
+
+
 
 def main():
     graph = []
@@ -342,7 +350,7 @@ def main():
             print(total_reliability)
             print(total_cost)
             # HERE IS WHERE YOU PRINT TO TEXTFILE and can organize the printing to console above call method
-            # PrintToFile("PartASolution.txt", graph, total_reliability, total_cost)
+            PrintToFile("PartASolution.txt", graph, total_reliability, total_cost)
         else:
             print("NO POSSIBLE SOLUTION FOR GIVEN RELIABILITY")
 
@@ -354,7 +362,7 @@ def main():
             print(total_reliability)
             print(total_cost)
             # HERE IS WHERE YOU PRINT TO TEXTFILE call method
-            # PrintToFile("PartBSolution.txt", graph, total_reliability, total_cost)
+            PrintToFile("PartBSolution.txt", graph, total_reliability, total_cost)
         else:
             print("NO POSSIBLE SOLUTION FOR GIVEN COST")
 
