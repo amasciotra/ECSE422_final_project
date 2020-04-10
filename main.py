@@ -299,7 +299,7 @@ def UI():
                         break
 
     prompt_cost_goal = input("Please enter Cost constraint for part B, leave empty and "
-                                    "press enter to skip this part: ")
+                             "press enter to skip this part: ")
     if prompt_cost_goal == "":
         print("NO COST GIVEN, CANNOT DO PART B")
         cost_constraint = None
@@ -315,6 +315,14 @@ def UI():
 
     return file_path, reliability_goal, cost_constraint
 
+
+# def PrintToFile(filename, graph, reliability, cost):
+#     put your stuff in here
+#
+#
+#
+#
+#
 
 def main():
     graph = []
@@ -333,7 +341,8 @@ def main():
             print(graph)
             print(total_reliability)
             print(total_cost)
-            #HERE IS WHERE YOU PRINT TO TEXTFILE and can organize the printing to console above
+            # HERE IS WHERE YOU PRINT TO TEXTFILE and can organize the printing to console above call method
+            # PrintToFile("PartASolution.txt", graph, total_reliability, total_cost)
         else:
             print("NO POSSIBLE SOLUTION FOR GIVEN RELIABILITY")
 
@@ -344,7 +353,8 @@ def main():
             print(graph)
             print(total_reliability)
             print(total_cost)
-            #HERE IS WHERE YOU PRINT TO TEXTFILE
+            # HERE IS WHERE YOU PRINT TO TEXTFILE call method
+            # PrintToFile("PartBSolution.txt", graph, total_reliability, total_cost)
         else:
             print("NO POSSIBLE SOLUTION FOR GIVEN COST")
 
