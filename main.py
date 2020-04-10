@@ -96,11 +96,13 @@ def doKruskalMST(city_list, edge_list, doMax):
 
     return mst_graph, total_reliability, total_cost
 
+
 def calculateCost(edge_list):
     total_cost = 0
     for edge in edge_list:
         total_cost += edge.getCost()
     return total_cost
+
 
 def isGraphConnected(graph, city_list):
     visited = []  # will store visited nodes
@@ -205,17 +207,17 @@ def makeReliabilityTreeGivenReliabilityGoal(city_list, edge_list, reliability_go
             total_cost = 0
             return graph, total_reliability, total_cost
 
-def maximizeReliabilitySubjectToCost(city_list, edge_list, cost_constraint):
 
+def maximizeReliabilitySubjectToCost(city_list, edge_list, cost_constraint):
     mst_graph_cost, mst_reliability_cost, mst_cost_cost = doKruskalMST(city_list, edge_list, 0)
 
     mst_graph_reliability, mst_reliability_reliability, mst_cost_reliability = doKruskalMST(city_list, edge_list, 1)
 
-    if mst_cost_reliability <= mst_cost_cost: # we mine as well start with the MSTReliability tree to maximize afterwards
+    if mst_cost_reliability <= mst_cost_cost:  # we mine as well start with the MSTReliability tree to maximize afterwards
         mst_graph = mst_graph_reliability
         mst_reliability = mst_reliability_reliability
         mst_cost = mst_reliability_cost
-    else: # start with minimum cost spanning tree
+    else:  # start with minimum cost spanning tree
         mst_graph = mst_graph_cost
         mst_reliability = mst_reliability_cost
         mst_cost = mst_cost_cost
@@ -270,50 +272,81 @@ def maximizeReliabilitySubjectToCost(city_list, edge_list, cost_constraint):
             total_reliability = calculateReliability(graph, city_list)
             return graph, total_reliability, total_cost
 
-def main():
-    try:
-        file_path = input("Please set input file path: ")
-        reliability_goal = input("Please enter reliability goal: ")
-        cost_constraint = input("Please enter cost constraint: ")
-    except Exception as e:
-        print(e)
-        exit()
 
+def UI():
+    file_path = input("Please set input file path (eg:input.txt): ")
+    prompt_reliability_goal = input("Please enter reliability goal between 0 and 1 for part A, leave empty and "
+                                    "press enter to skip this part: ")
+    if prompt_reliability_goal == "":
+        print("NO RELIABILITY GIVEN, CANNOT DO PART A")
+        reliability_goal = None
+    else:
+        if prompt_reliability_goal.replace('.', '', 1).isdigit():
+            reliability_goal = float(prompt_reliability_goal)
+            if reliability_goal > 1:
+                while True:
+                    prompt_reliability_goal = input("Invalid Reliability, enter a new one: ")
+                    if prompt_reliability_goal.replace('.', '', 1).isdigit():
+                        reliability_goal = float(prompt_reliability_goal)
+                        if reliability_goal <= 1:
+                            break
+        else:
+            while True:
+                prompt_reliability_goal = input("Invalid Reliability, enter a new one: ")
+                if prompt_reliability_goal.replace('.', '', 1).isdigit():
+                    reliability_goal = float(prompt_reliability_goal)
+                    if reliability_goal <= 1:
+                        break
+
+    prompt_cost_goal = input("Please enter Cost constraint for part B, leave empty and "
+                                    "press enter to skip this part: ")
+    if prompt_cost_goal == "":
+        print("NO COST GIVEN, CANNOT DO PART B")
+        cost_constraint = None
+    else:
+        if prompt_cost_goal.isdigit():
+            cost_constraint = prompt_cost_goal
+        else:
+            while True:
+                prompt_cost_goal = input("Invalid Cost, enter a new one: ")
+                if prompt_cost_goal.isdigit():
+                    cost_constraint = prompt_cost_goal
+                    break
+
+    return file_path, reliability_goal, cost_constraint
+
+
+def main():
     graph = []
     total_cost = 0
     total_reliability = 0
 
+    file_path, reliability_goal, cost_constraint = UI()
+
     city_list, edge_list = edge_generator.generate(file_path)
 
     #
-    if reliability_goal == "":
-        print("NO RELIABILITY GIVEN, CANNOT DO PART A")
-    # elif float(reliability_goal) > 1:
-    #     while True:
-    #         reliability_goal = input("Please enter reliability less than or equal to 1")
-    #         if int(reliability_goal) <= 1 or reliability_goal == "":
-    #             break
-    else:
+    if not reliability_goal == None:
         graph, total_reliability, total_cost = makeReliabilityTreeGivenReliabilityGoal(city_list, edge_list,
                                                                                        reliability_goal)
         if graph is not None:
             print(graph)
             print(total_reliability)
             print(total_cost)
+            #HERE IS WHERE YOU PRINT TO TEXTFILE and can organize the printing to console above
         else:
             print("NO POSSIBLE SOLUTION FOR GIVEN RELIABILITY")
 
-    if cost_constraint == "":
-        print("NO COST GIVEN, CANNOT DO PART B")
-    else:
+    if not cost_constraint == None:
         graph, total_reliability, total_cost = maximizeReliabilitySubjectToCost(city_list, edge_list, cost_constraint)
+
         if graph is not None:
             print(graph)
             print(total_reliability)
             print(total_cost)
+            #HERE IS WHERE YOU PRINT TO TEXTFILE
         else:
             print("NO POSSIBLE SOLUTION FOR GIVEN COST")
-
 
 
 main()
