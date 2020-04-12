@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6623ac2d-8615-423a-b44d-b06926bc3cc3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +14,11 @@
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ZoLDiHvDFQiOFmklKKt7uRII0D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -61,8 +65,17 @@
       <workItem from="1586210619280" duration="60000" />
       <workItem from="1586397441962" duration="2741000" />
       <workItem from="1586466053302" duration="11797000" />
-      <workItem from="1586541890008" duration="3761000" />
+      <workItem from="1586541890008" duration="3837000" />
+      <workItem from="1586724345090" duration="246000" />
     </task>
+    <task id="LOCAL-00001" summary="Joe addition not sure if this is good&#10;&#10;Friday April 10 3:45pm">
+      <created>1586547737892</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586547737892</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,15 +94,27 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Joe addition not sure if this is good&#10;&#10;Friday April 10 3:45pm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Joe addition not sure if this is good&#10;&#10;Friday April 10 3:45pm" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="170" y="23" key="CommitChangelistDialog2" timestamp="1586547737479">
+      <screen x="0" y="23" width="1280" height="727" />
+    </state>
+    <state x="170" y="23" key="CommitChangelistDialog2/0.23.1280.727@0.23.1280.727" timestamp="1586547737479" />
     <state x="149" y="26" key="SettingsEditor" timestamp="1586544367312">
       <screen x="0" y="23" width="1280" height="727" />
     </state>
     <state x="149" y="26" key="SettingsEditor/0.23.1280.727@0.23.1280.727" timestamp="1586544367312" />
-    <state x="429" y="310" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586542297979">
+    <state x="319" y="219" key="com.intellij.ide.util.TipDialog" timestamp="1586724345127">
       <screen x="0" y="23" width="1280" height="727" />
     </state>
-    <state x="429" y="310" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.727@0.23.1280.727" timestamp="1586542297979" />
+    <state x="319" y="219" key="com.intellij.ide.util.TipDialog/0.23.1280.727@0.23.1280.727" timestamp="1586724345127" />
+    <state x="429" y="310" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586724355998">
+      <screen x="0" y="23" width="1280" height="727" />
+    </state>
+    <state x="429" y="310" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.727@0.23.1280.727" timestamp="1586724355998" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
