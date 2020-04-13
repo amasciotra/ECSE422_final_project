@@ -1,4 +1,4 @@
-The maximum cost constraint given is 100
+The maximum cost constraint given is 120
 Final Graph that meets requirements 
 [endpoints: B<->D, cost: 10.0, reliability: 0.97 
 , endpoints: A<->D, cost: 10.0, reliability: 0.96 
@@ -8,6 +8,7 @@ Final Graph that meets requirements
 , endpoints: C<->F, cost: 10.0, reliability: 0.94 
 , endpoints: A<->B, cost: 10.0, reliability: 0.94 
 , endpoints: D<->E, cost: 20.0, reliability: 0.93 
+, endpoints: C<->D, cost: 20.0, reliability: 0.94 
 ]
-Reliability of this graph: 0.9864407847359616
-Cost of this graph: 100.0$
+Reliability of this graph: 0.9919339592482913
+Cost of this graph: 120.0$

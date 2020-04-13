@@ -4,10 +4,15 @@ Fault Tolerant Computing final project, create a network given reliability and c
 Alex Masciotra (260746829)
 Giuseppe Lipari (260742811)
 
+THIS CODE RUNS WITH PYTHON 3.7, WILL NOT WORK WITH PYTHON 2
+
+Made with python version 3.7, cannot guarantee full functionality with other versions
+of python 3. 
+
 This project takes in an input txt file in the form of the input.txt given, for the
 number of cities, and reliabilities and cost of each city to be connected to eachother.
 
-It outputs the solutions if possible to the respective textfiles as well as print on the 
+It outputs the solutions if possible to the respective text files as well as printed on the 
 console
 
 PartASolution and PartBSolution are the textfile

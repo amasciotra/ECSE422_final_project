@@ -1,4 +1,4 @@
-The given Reliability Goal is 0.9
+The given Reliability Goal is 0.95
 Final Graph that meets requirements 
 [endpoints: B<->D, cost: 10.0, reliability: 0.97 
 , endpoints: A<->D, cost: 10.0, reliability: 0.96 
@@ -6,6 +6,7 @@ Final Graph that meets requirements
 , endpoints: B<->C, cost: 10.0, reliability: 0.94 
 , endpoints: A<->E, cost: 20.0, reliability: 0.93 
 , endpoints: C<->E, cost: 40.0, reliability: 0.9 
+, endpoints: C<->F, cost: 10.0, reliability: 0.94 
 ]
-Reliability of this graph: 0.9303858201599998
-Cost of this graph: 100.0$
+Reliability of this graph: 0.9811126704959999
+Cost of this graph: 110.0$
