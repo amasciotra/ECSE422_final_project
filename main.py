@@ -3,6 +3,7 @@
 # Cost/Reliability matrix: A-B,A-C,A-D...B-C,B-D...C-D....(N(N-1)/2)
 import edge_generator
 from edge import Edge
+from collections import defaultdict
 import itertools
 
 
@@ -104,23 +105,30 @@ def calculateCost(edge_list):
     return total_cost
 
 
-def isGraphConnected(graph, city_list):
-    visited = []  # will store visited nodes
-    ordered_graph = sorted(graph, key=lambda edge: edge.getVertex1())
-    first_vertex = ordered_graph[0].getVertex1()
-    # start at first vertex, this one is therefore visited
-    visited.append(first_vertex)
+def isGraphConnected(test_graph, city_list):
+    ordered_graph = sorted(test_graph, key=lambda edge: edge.getVertex1())
+    # create a dictionary to hold all the list of edges together so can do BFS
+    actual_graph = defaultdict(list)
 
     for edge in ordered_graph:
-        current = edge.getVertex1()
-        neighbor = edge.getVertex2()
-        # we have an undirected graph, so can either go from current to neighbor or from neighbor to current
-        if current in visited:
-            if neighbor not in visited:
-                visited.append(neighbor)
-        if neighbor in visited:
-            if current not in visited:
-                visited.append(current)
+        source = edge.getVertex1()
+        destination = edge.getVertex2()
+        actual_graph[source].append(destination)
+        actual_graph[destination].append(source)
+
+    visited = []  # will store visited nodes
+    queue = []  # will store all neighbors of visited vertex
+    first_vertex = ordered_graph[0].getVertex1()
+    visited.append(first_vertex)
+    queue.append(first_vertex)
+
+    while queue:  # while there are more neighbors to be visited, means we havent finished traversing
+        current_node = queue.pop()
+
+        for neighbor_node in actual_graph[current_node]:
+            if neighbor_node not in visited:
+                queue.append(neighbor_node)
+                visited.append(neighbor_node)
 
     if len(visited) == len(city_list):
         return True
@@ -216,7 +224,7 @@ def maximizeReliabilitySubjectToCost(city_list, edge_list, cost_constraint):
     if mst_cost_reliability <= mst_cost_cost:  # we mine as well start with the MSTReliability tree to maximize afterwards
         mst_graph = mst_graph_reliability
         mst_reliability = mst_reliability_reliability
-        mst_cost = mst_reliability_cost
+        mst_cost = mst_cost_reliability
     else:  # start with minimum cost spanning tree
         mst_graph = mst_graph_cost
         mst_reliability = mst_reliability_cost
@@ -316,20 +324,17 @@ def UI():
     return file_path, reliability_goal, cost_constraint
 
 
-#def PrintToFile(filename, graph, reliability, cost):
-#    fileprintA = open("Solutions to part A","w+")
-#    fileprintA.write("Part A graph", graph)
-#    fileprintA.write("Part A Reliability", total_reliability)
-#    fileprintA.write("Part A Cost", total_cost)
-#    fileprintA.close()
-#
-#    fileprintB = open("Solutions to Part B","w+")
-#    fileprintB.write("Part B Graph", graph)
-#    fileprintB.write("Part B Reliability", total_reliability)
-#    fileprintB.write("Part B Cost", total_cost)
-#    fileprintB.close()
-
-
+def PrintToFile(filename, graph, reliability, cost, reli_goal, cost_goal, partb):
+    file = open(filename, "w+")
+    if partb == 0:
+        file.write("The given Reliability Goal is " + str(reli_goal) + "\n")
+    else:
+        file.write("The maximum cost constraint given is " + str(cost_goal) + "\n")
+    file.write("Final Graph that meets requirements \n")
+    file.writelines(str(graph) + "\n")
+    file.write("Reliability of this graph: " + str(reliability) + "\n")
+    file.write("Cost of this graph: " + str(cost) + "$")
+    file.close()
 
 
 def main():
@@ -342,7 +347,7 @@ def main():
     city_list, edge_list = edge_generator.generate(file_path)
 
     #
-    if not reliability_goal == None:
+    if reliability_goal is not None:
         graph, total_reliability, total_cost = makeReliabilityTreeGivenReliabilityGoal(city_list, edge_list,
                                                                                        reliability_goal)
         if graph is not None:
@@ -350,11 +355,18 @@ def main():
             print(total_reliability)
             print(total_cost)
             # HERE IS WHERE YOU PRINT TO TEXTFILE and can organize the printing to console above call method
-            PrintToFile("PartASolution.txt", graph, total_reliability, total_cost)
+            PrintToFile("PartASolution.txt", graph, total_reliability, total_cost, reliability_goal, cost_constraint, 0)
         else:
-            print("NO POSSIBLE SOLUTION FOR GIVEN RELIABILITY")
+            print("NO POSSIBLE SOLUTION FOR GIVEN RELIABILITY OF " + str(reliability_goal))
+            file = open("PartASolution.txt", "w+")
+            file.write("NO POSSIBLE SOLUTION FOR GIVEN RELIABILITY OF " + str(reliability_goal))
+            file.close()
+    else:
+        file = open("PartASolution.txt", "w+")
+        file.write("NO GIVEN RELIABILITY, NO GIVEN SOLUTION")
+        file.close()
 
-    if not cost_constraint == None:
+    if cost_constraint is not None:
         graph, total_reliability, total_cost = maximizeReliabilitySubjectToCost(city_list, edge_list, cost_constraint)
 
         if graph is not None:
@@ -362,9 +374,16 @@ def main():
             print(total_reliability)
             print(total_cost)
             # HERE IS WHERE YOU PRINT TO TEXTFILE call method
-            PrintToFile("PartBSolution.txt", graph, total_reliability, total_cost)
+            PrintToFile("PartBSolution.txt", graph, total_reliability, total_cost, reliability_goal, cost_constraint, 1)
         else:
-            print("NO POSSIBLE SOLUTION FOR GIVEN COST")
+            print("NO POSSIBLE SOLUTION FOR GIVEN COST OF " + str(cost_constraint))
+            file = open("PartBSolution.txt", "w+")
+            file.write("NO POSSIBLE SOLUTION FOR GIVEN COST OF " + str(cost_constraint))
+            file.close()
+    else:
+        file = open("PartBSolution.txt", "w+")
+        file.write("NO GIVEN COST, NO GIVEN SOLUTION")
+        file.close()
 
 
 main()
