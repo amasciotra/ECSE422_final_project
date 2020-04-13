@@ -6,6 +6,9 @@ Giuseppe Lipari (260742811)
 
 THIS CODE RUNS WITH PYTHON 3.7, WILL NOT WORK WITH PYTHON 2
 
+run `python3 main.py` to run the project
+or `python main.py` will also work if python 3 is set as the default path
+
 Made with python version 3.7, cannot guarantee full functionality with other versions
 of python 3. 
 

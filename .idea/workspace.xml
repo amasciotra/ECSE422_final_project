@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6623ac2d-8615-423a-b44d-b06926bc3cc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PartASolution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PartASolution.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PartBSolution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PartBSolution.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +80,7 @@
       <workItem from="1586466053302" duration="11797000" />
       <workItem from="1586541890008" duration="3837000" />
       <workItem from="1586724345090" duration="246000" />
-      <workItem from="1586797812718" duration="12233000" />
+      <workItem from="1586797812718" duration="12588000" />
     </task>
     <task id="LOCAL-00001" summary="Joe addition not sure if this is good&#10;&#10;Friday April 10 3:45pm">
       <created>1586547737892</created>
